@@ -1,0 +1,56 @@
+# Edge Computing Configuration
+
+edge_device:
+  id: "edge-001"
+  location: "Site-A"
+  sampling_rate: 1.0  # Hz
+
+sensors:
+  accelerometer:
+    enabled: true
+    threshold: 0.5
+    calibration:
+      x_bias: 0.0
+      y_bias: 0.0
+      z_bias: 0.0
+      scale_factor: 1.0
+  
+  tiltmeter:
+    enabled: true
+    threshold: 0.1
+    calibration:
+      x_offset: 0.0
+      y_offset: 0.0
+  
+  weather:
+    enabled: true
+    update_interval: 300  # seconds
+
+communication:
+  central_server: "http://localhost:8000"
+  sync_interval: 60  # seconds
+  retry_attempts: 3
+  heartbeat_interval: 30  # seconds
+
+storage:
+  max_local_records: 10000
+  backup_interval: 3600  # seconds
+  cleanup_interval: 7200  # seconds
+
+analysis:
+  thresholds:
+    instability_threshold: 0.5
+    acceleration_threshold: 0.3
+    tilt_threshold: 0.1
+    environmental_threshold: 0.7
+    combined_risk_threshold: 0.6
+    emergency_threshold: 0.8
+  
+  window_size: 100  # Number of readings for trend analysis
+  alert_cooldown: 300  # Minimum seconds between similar alerts
+
+logging:
+  level: "INFO"
+  file: "edge_computing.log"
+  max_size_mb: 10
+  backup_count: 5
