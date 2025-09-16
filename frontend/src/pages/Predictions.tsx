@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   Container,
   Typography,
@@ -62,7 +62,7 @@ const Predictions: React.FC = () => {
   const [riskAssessment, setRiskAssessment] = useState<RiskAssessment | null>(null);
   const [loading, setLoading] = useState(false);
 
-  const generatePrediction = async () => {
+  const generatePrediction = useCallback(async () => {
     setLoading(true);
     try {
       const response = await fetch(`http://localhost:8000/api/predictions/risk-assessment/${selectedSite}`, {
@@ -77,11 +77,11 @@ const Predictions: React.FC = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [selectedSite]);
 
   useEffect(() => {
     generatePrediction();
-  }, [selectedSite]);
+  }, [generatePrediction]);
 
   const getRiskLevelColor = (riskLevel: string) => {
     switch (riskLevel) {
