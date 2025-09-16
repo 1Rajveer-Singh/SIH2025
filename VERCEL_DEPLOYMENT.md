@@ -58,9 +58,23 @@ The project includes these Vercel-specific files:
 - Ensure all dependencies are in `frontend/package.json`
 - Verify build works locally: `cd frontend && npm run build`
 
+### NOT_FOUND Error (404)
+If you're getting a NOT_FOUND error when accessing routes directly:
+
+1. **Check vercel.json configuration** - Ensure it uses `@vercel/static-build`
+2. **Verify _redirects file** - Should contain `/*    /index.html   200`
+3. **Confirm routing setup** - All routes should fallback to index.html
+4. **Test locally** - Build and serve locally to verify routing works
+
+The project includes these files to fix NOT_FOUND errors:
+- `vercel.json` with proper static build configuration
+- `frontend/public/_redirects` for SPA routing fallback
+- Routes configuration that serves index.html for all paths
+
 ### Routing Issues
-- The `vercel.json` includes rewrites for React Router
-- All routes will redirect to `index.html` for client-side routing
+- The `vercel.json` includes routes for React Router
+- All non-static routes redirect to `index.html` for client-side routing
+- Static assets (JS, CSS, images) are served directly
 
 ### API Connection
 - Update `REACT_APP_API_URL` environment variable
