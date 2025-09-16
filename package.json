@@ -1,0 +1,11 @@
+{
+  "name": "rockfall-prediction-system",
+  "version": "1.0.0",
+  "description": "AI-powered Rockfall Prediction System for geological monitoring",
+  "scripts": {
+    "build": "cd frontend && npm install && npm run build",
+    "start": "cd frontend && npm start",
+    "dev": "cd frontend && npm start"
+  },
+  "private": true
+}
