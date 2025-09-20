@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
-import { apiService } from '../services/api.ts';
+import { apiService } from '../services/api';
 
 export interface User {
   id: number;

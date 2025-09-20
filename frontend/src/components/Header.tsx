@@ -24,8 +24,8 @@ import {
   Error as ErrorIcon,
   Info as InfoIcon
 } from '@mui/icons-material';
-import { useAuth } from '../hooks/useAuth.tsx';
-import { webSocketService } from '../services/websocket.ts';
+import { useAuth } from '../hooks/useAuth';
+import { webSocketService } from '../services/websocket';
 
 interface HeaderProps {
   onMenuToggle: () => void;

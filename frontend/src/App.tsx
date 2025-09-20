@@ -3,23 +3,23 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { ThemeProvider, createTheme, CssBaseline, Box } from '@mui/material';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { SnackbarProvider } from 'notistack';
-import { AuthProvider, useAuth } from './hooks/useAuth.tsx';
+import { AuthProvider, useAuth } from './hooks/useAuth';
 
 // Import Pages
-import Dashboard from './pages/Dashboard.tsx';
-import Login from './pages/Login.tsx';
-import Sites from './pages/Sites.tsx';
-import Monitoring from './pages/Monitoring.tsx';
-import Alerts from './pages/Alerts.tsx';
-import Predictions from './pages/Predictions.tsx';
-import Settings from './pages/Settings.tsx';
-import Home from './pages/Home.tsx';
-import RockfallAnalysis from './pages/RockfallAnalysis.tsx';
+import Dashboard from './pages/Dashboard';
+import Login from './pages/Login';
+import Sites from './pages/Sites';
+import Monitoring from './pages/Monitoring';
+import Alerts from './pages/Alerts';
+import Predictions from './pages/Predictions';
+import Settings from './pages/Settings';
+import Home from './pages/Home';
+import RockfallAnalysis from './pages/RockfallAnalysis';
 
 // Import Components
-import Header from './components/Header.tsx';
-import Sidebar from './components/Sidebar.tsx';
-import LoadingScreen from './components/LoadingScreen.tsx';
+import Header from './components/Header';
+import Sidebar from './components/Sidebar';
+import LoadingScreen from './components/LoadingScreen';
 
 // Create theme
 const theme = createTheme({
