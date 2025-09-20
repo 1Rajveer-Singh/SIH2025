@@ -17,7 +17,6 @@ import {
 } from '@mui/material';
 import {
   Notifications as NotificationsIcon,
-  AccountCircle,
   Menu as MenuIcon,
   Warning as WarningIcon,
   CheckCircle as CheckCircleIcon,

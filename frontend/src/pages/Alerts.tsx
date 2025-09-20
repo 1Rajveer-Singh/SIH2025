@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import {
-  Container,
   Typography,
   Box,
   Grid,
@@ -42,7 +41,6 @@ interface AlertData {
 
 const Alerts: React.FC = () => {
   const [alerts, setAlerts] = useState<AlertData[]>([]);
-  const [loading, setLoading] = useState(true);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [selectedAlert, setSelectedAlert] = useState<AlertData | null>(null);
 
@@ -62,8 +60,6 @@ const Alerts: React.FC = () => {
       }
     } catch (error) {
       console.error('Error fetching alerts:', error);
-    } finally {
-      setLoading(false);
     }
   };
 
