@@ -1098,39 +1098,23 @@ const Settings: React.FC = () => {
                         </Typography>
                       </Box>
                       <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                          {/* Deduplicate devices by output/result, keep higher priority */}
-                          {(() => {
-                            // Group devices by their output/result (using outputFormat as proxy)
-                            const deviceGroups: { [key: string]: Device[] } = {};
-                            category.devices.forEach(device => {
-                              const key = device.outputFormat.join(',');
-                              if (!deviceGroups[key]) deviceGroups[key] = [];
-                              deviceGroups[key].push(device);
-                            });
-                            // For each group, keep only the device with highest metrics.uptime
-                            const dedupedDevices = Object.values(deviceGroups).map(devices => {
-                              return devices.reduce((best, curr) =>
-                                curr.metrics.uptime > best.metrics.uptime ? curr : best
-                              );
-                            });
-                            return dedupedDevices.map(device => (
-                              <Tooltip key={device.id} title={`${device.name}: ${device.status}`}>
-                                <Badge 
-                                  badgeContent={device.enabled ? <SignalIcon sx={{ fontSize: 12 }} /> : <NoSignalIcon sx={{ fontSize: 12 }} />}
-                                  color={device.enabled ? 'primary' : 'default'}
-                                  sx={{ '& .MuiBadge-badge': { right: -3, top: 3 } }}
-                                >
-                                  <Chip
-                                    size="small"
-                                    icon={getStatusIcon(device.status)}
-                                    label={device.status}
-                                    color={getStatusColor(device.status) as any}
-                                    variant="outlined"
-                                  />
-                                </Badge>
-                              </Tooltip>
-                            ));
-                          })()}
+                        {category.devices.map(device => (
+                          <Tooltip key={device.id} title={`${device.name}: ${device.status}`}>
+                            <Badge 
+                              badgeContent={device.enabled ? <SignalIcon sx={{ fontSize: 12 }} /> : <NoSignalIcon sx={{ fontSize: 12 }} />}
+                              color={device.enabled ? 'primary' : 'default'}
+                              sx={{ '& .MuiBadge-badge': { right: -3, top: 3 } }}
+                            >
+                              <Chip
+                                size="small"
+                                icon={getStatusIcon(device.status)}
+                                label={device.status}
+                                color={getStatusColor(device.status) as any}
+                                variant="outlined"
+                              />
+                            </Badge>
+                          </Tooltip>
+                        ))}
                       </Box>
                     </Box>
                   </AccordionSummary>
