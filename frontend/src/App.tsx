@@ -249,6 +249,8 @@ const App: React.FC = () => {
                 
                 {/* Default route - redirect to home page */}
                 <Route path="/" element={<Navigate to="/home" replace />} />
+                
+                {/* Catch-all route for 404 errors - redirect to home */}
                 <Route path="*" element={<Navigate to="/home" replace />} />
               </Routes>
             </Router>
